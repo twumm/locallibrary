@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
     const Book = sequelize.define('Book', {
+        // Define properties.
         title: {
             type: Sequelize.STRING,
             allowNull: false
@@ -13,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
             type: Sequelize.STRING,
             allowNull: false
         },
+
+        // Define getter method for the url
         getterMethods: {
             url() {
                 return '/catalog/book/' + this.id;
@@ -20,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
+    // Define associations to the author and genre
     Book.associate = (models) => {
         const { Author, Genre } = models;
         Book.belongsTo(Author, { as: 'Author', allowNull: false });

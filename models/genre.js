@@ -1,9 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
     const Genre = sequelize.define('Genre', {
+        // Define properties.
         name: DataTypes.STRING,
 
-        getMethods: {
+        // Define getter method for the url
+        getterMethods: {
             url() {
                 return '/catalog/genre/' + this.id;
             }

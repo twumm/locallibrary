@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
     const Author = sequelize.define('Author', {
+        // Define properties.
         first_name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -11,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         date_of_birth: DataTypes.DATE,
         date_of_death: DataTypes.DATE,
+
+        // Define getters for url, fullname, lifespan and formatted dates
         getterMethods: {
             url() {
                 return '/catalog/author/' + this.id
