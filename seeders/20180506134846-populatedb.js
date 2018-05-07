@@ -1,5 +1,7 @@
 'use strict';
 
+const Author = require('../models/author');
+
 module.exports = {
     up: (queryInterface, Sequelize) => {
         // Insert Authors.
@@ -7,36 +9,52 @@ module.exports = {
             first_name: 'Patrick',
             last_name: 'Rothfuss',
             date_of_birth: '1973-06-06',
-            date_of_death: false
+            date_of_death: null,
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             first_name: 'Ben',
             last_name: 'Bova',
             date_of_birth: '1932-11-8',
-            date_of_death: false
+            date_of_death: null,
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             first_name: 'Isaac',
             last_name: 'Asimov',
             date_of_birth: '1920-01-02',
-            date_of_death: '1992-04-06'
+            date_of_death: '1992-04-06',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             first_name: 'Bob',
             last_name: 'Billings',
-            date_of_birth: false,
-            date_of_death: false
+            date_of_birth: null,
+            date_of_death: null,
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             first_name: 'Jim',
             last_name: 'Jones',
             date_of_birth: '1971-12-16',
-            date_of_death: false
+            date_of_death: null,
+            createdAt: new Date(),
+            updatedAt: new Date()
         }], {});
 
         // Insert Genres.
         return queryInterface.bulkInsert('Genres', [{
-            name: 'Fantasy'
+            name: 'Fantasy',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
-            name: 'Science Fiction'
+            name: 'Science Fiction',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
-            name: 'French Poetry'
+            name: 'French Poetry',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }], {});
 
         // Insert Books.
@@ -46,111 +64,146 @@ module.exports = {
             isbn: "9781473211896",
             author: author[0], // This should be the first author
             genre: [genres[0], ] // This should be the first genre in the array
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             title: "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
             summary: 'Picking up the tale of Kvothe Kingkiller once again, we follow him into exile, into political intrigue, courtship, adventure, love and magic... and further along the path that has turned Kvothe, the mightiest magician of his age, a legend in his own time, into Kote, the unassuming pub landlord.',
             isbn: '9788401352836',
             author: authors[0],
-            genre: [genres[0], ]
+            genre: [genres[0], ],
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             title: 'The Slow Regard of Silent Things (Kingkiller Chronicle)',
             summary: 'Deep below the University, there is a dark place. Few people know of it: a broken web of ancient passageways and abandoned rooms. A young woman lives there, tucked among the sprawling tunnels of the Underthing, snug in the heart of this forgotten place.',
             isbn: '9780756411336',
             author: authors[0],
-            genre: [genres[0], ]
+            genre: [genres[0], ],
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             title: 'Apes and Angels',
             summary: 'Humankind headed out to the stars not for conquest, nor exploration, nor even for curiosity. Humans went to the stars in a desperate crusade to save intelligent life wherever they found it. A wave of death is spreading through the Milky Way galaxy, an expanding sphere of lethal gamma ...',
             isbn: '9780765379528',
             author: authors[1],
-            genre: [genres[1], ]
+            genre: [genres[1], ],
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             title: 'Death Wave',
             summary: "In Ben Bova's previous novel New Earth, Jordan Kell led the first human mission beyond the solar system. They discovered the ruins of an ancient alien civilization. But one alien AI survived, and it revealed to Jordan Kell that an explosion in the black hole at the heart of the Milky Way galaxy has created a wave of deadly radiation, expanding out from the core toward Earth. Unless the human race acts to save itself, all life on Earth will be wiped out...",
             isbn: '9780765379504',
             author: authors[1],
-            genre: [genres[1], ]
+            genre: [genres[1], ],
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             title: 'Test Book 1',
             summary: 'Summary of test book 1',
             isbn: 'ISBN111111',
             author: authors[4],
-            genre: [genres[0], genres[1]]
+            genre: [genres[0], genres[1]],
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             title: 'Test Book 2',
             summary: 'Summary of test book 2',
             isbn: 'ISBN222222',
             author: authors[4],
-            genre: false
+            genre: null,
+            createdAt: new Date(),
+            updatedAt: new Date()
         }], {});
 
         // Insert BookInstances.
         return queryInterface.bulkInsert('BookInstances', [{
             book: books[0],
             imprint: 'London Gollancz, 2014.',
-            due_back: false,
-            status: 'Available'
+            due_back: null,
+            status: 'Available',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             book: books[1],
             imprint: 'Gollancz, 2011.',
-            due_back: false,
-            status: 'Loaned'
+            due_back: null,
+            status: 'Loaned',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             book: books[2],
             imprint: 'Gollancz, 2015.',
-            due_back: false,
-            status: false
+            due_back: null,
+            status: null,
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             book: books[3],
             imprint: 'New York Tom Doherty Associates, 2016.',
-            due_back: false,
-            status: 'Available'
+            due_back: null,
+            status: 'Available',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             book: books[3],
             imprint: 'New York Tom Doherty Associates, 2016.',
-            due_back: false,
-            status: 'Available'
+            due_back: null,
+            status: 'Available',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             book: books[3],
             imprint: 'New York Tom Doherty Associates, 2016.',
-            due_back: false,
-            status: 'Available'
+            due_back: null,
+            status: 'Available',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             book: books[4],
             imprint: 'New York, NY Tom Doherty Associates, LLC, 2015.',
-            due_back: false,
-            status: 'Available'
+            due_back: null,
+            status: 'Available',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             book: books[4],
             imprint: 'New York, NY Tom Doherty Associates, LLC, 2015.',
-            due_back: false,
-            status: 'Maintenance'
+            due_back: null,
+            status: 'Maintenance',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             book: books[4],
             imprint: 'New York, NY Tom Doherty Associates, LLC, 2015.',
-            due_back: false,
-            status: 'Loaned'
+            due_back: null,
+            status: 'Loaned',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             book: books[0],
             imprint: 'Imprint XXX2',
-            due_back: false,
-            status: false
+            due_back: null,
+            status: null,
+            createdAt: new Date(),
+            updatedAt: new Date()
         }, {
             book: books[1],
             imprint: 'Imprint XXX3',
-            due_back: false,
-            status: false
+            due_back: null,
+            status: null,
+            createdAt: new Date(),
+            updatedAt: new Date()
         }]);
-        /*
-          Add altering commands here.
-          Return a promise to correctly handle asynchronicity.
+        /**
+        Add altering commands here.
+        Return a promise to correctly handle asynchronicity.
 
-          Example:
-          return queryInterface.bulkInsert('Person', [{
+        Example: return queryInterface.bulkInsert('Person', [{
             name: 'John Doe',
             isBetaMember: false
-          }], {});
-        */
+        }], {});
+         */
     },
 
     down: (queryInterface, Sequelize) => {
@@ -167,3 +220,5 @@ module.exports = {
         */
     }
 };
+
+console.log(Author);

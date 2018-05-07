@@ -9,7 +9,7 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             status: {
-                type: DataTypes.ENUM,
+                type: Sequelize.ENUM,
                 values: ['Available', 'Maintenance', 'Loaned', 'Reserved'],
                 defaultValue: 'Maintenance'
             },
